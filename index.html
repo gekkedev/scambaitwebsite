@@ -1,0 +1,57 @@
+<html>
+<title>Security Warning</title>
+
+<body class="bg-danger">
+    <div class="container w-75 text-white">
+        <br>
+        <p>
+            <i class="fa fa-ban fa-5x"></i>
+        </p>
+        <p class="h2">Your computer has been locked</p>
+        <p>
+            Your computer with the IP address <span id="ipaddress"></span> has been infected by the Virus
+            RDN/Backdoor.trojan!<span id="randomchars"></span> - <b>Because System Activation KEY has expired</b> & Your
+            information (for example passwords, messages, and credit cards) have been stolen.
+            <b>
+                Call the Technical Support number
+                <span class="phonenumber"></span>
+            </b>
+            to protect your files and identity from further damage.
+        </p>
+        <p>
+            <b>Call:</b> <span class="phonenumber"></span>
+        </p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script>
+        /*  References:
+            https://getbootstrap.com/docs
+            https://fontawesome.com/icons
+            https://api.jquery.com
+        */
+
+        //phone number
+        let phoneNumber = localStorage.getItem("scam_phonenumber");
+        if (!phoneNumber)
+            phoneNumber = "+1-888-123-SCAM";
+        Object.values($(".phonenumber")).forEach(el => el.outerHTML = phoneNumber);
+
+        //IP
+        let ip = localStorage.getItem("scam_ipaddress");
+        if (!ip)
+            /*  Default IP is the public Google DNS, better replace this.
+                Add your own network adapter's IP in case scammers are going to verify it - they tend to confuse public with local IPs
+                or at least a random IP to make it believable: https://onlinerandomtools.com/generate-random-ip
+                Don't consider adding your public IP as that could just make you vulnerable.
+            */
+            ip = "8.8.8.8";
+        $("#ipaddress")[0].outerHTML = ip;
+
+        $("#randomchars")[0].outerHTML = Math.random().toString(36).substr(2, 12).toUpperCase(); //attach a unique-looking identifier string to the virus
+        Object.values($("script")).forEach(el => el.outerHTML = "") //hide the script section ;-)
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+</body>
+
+</html>
