@@ -4,6 +4,8 @@ This is a simple HTML page to present scammers with when scambaiting and reverse
 
 ## Setup
 1. Make sure to keep yourself safe (VPN+VM)!
+1. Download and host the [HTML file](index.html) at `localhost` (127.0.0.1) using [XAMPP](https://www.apachefriends.org/index.html)(Windows), Apache(Linux) or CLI tools like [PHP's built-in webserver](https://www.php.net/manual/features.commandline.webserver.php).
+1. Make sure the directory you are hosting only contains the file `index.html`. You don't want scammers to download any of your personal files from your host into the virtual machine.
 1. Reroute e.g. `google.com` to 127.0.0.1 by using your host's `hosts` file.
 1. Open the JavaScript console of the VM's webbrowser.
 1. Open `google.com` using your VM. The interstitial website should appear.
